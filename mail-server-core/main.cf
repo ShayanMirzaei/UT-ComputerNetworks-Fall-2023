@@ -1,0 +1,44 @@
+# /etc/postfix/main.cf
+
+# Set the hostname
+myhostname = mail.mookool.com
+
+# Set the domain name
+mydomain = mookool.com
+myorigin = $mydomain
+
+# Set the delivery method to local only
+mydestination = localhost.$mydomain, localhost, localhost.localdomain
+inet_interfaces = all
+mynetworks = all
+
+# Disable DNS lookups
+disable_vrfy_command = yes
+smtpd_delay_reject = yes
+smtpd_helo_required = yes
+smtpd_helo_restrictions = reject_invalid_helo_hostname
+strict_rfc821_envelopes = yes
+
+smtpd_relay_restrictions = reject_unauth_destination
+smtpd_recipient_restrictions = reject_unauth_destination
+
+# Virtual mailbox mapping
+virtual_mailbox_domains = $mydomain
+virtual_mailbox_maps = hash:/etc/postfix/virtual_mailbox
+
+recipient_canonical_maps = hash:/etc/postfix/recipient_canonical_maps
+
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
+smtpd_sasl_security_options = noanonymous
+
+virtual_transport = dovecot
+
+# Set the message size limit
+message_size_limit = 10485760
+
+# Log settings
+maillog_file = /var/log/mail.log
+
+debug_peer_list = 172.21.0.1, 172.21.0.3, project1-mail-server-roundcube-1.project1_mail-network, mail-server-roundcube, all

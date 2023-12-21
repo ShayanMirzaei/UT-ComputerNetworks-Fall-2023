@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  mail-server-core:
+    build:
+      context: ./mail-server-core/
+      dockerfile: Dockerfile
+    ports:
+      - "143:143"
+      - "110:110"
+      - "25:25"
+    networks:
+      - mail-network
+
+  mail-server-roundcube:
+    build:
+      context: ./mail-server-roundcube
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - mail-network
+
+  mail-server-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: roundcubemail
+      POSTGRES_USER: roundcube_user
+      POSTGRES_PASSWORD: roundcube_password
+    networks:
+      - mail-network
+
+networks:
+  mail-network:
