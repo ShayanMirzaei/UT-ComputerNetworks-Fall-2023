@@ -1,0 +1,17 @@
+Return-Path: <shayan@mookool.com>
+Delivered-To: ava@mookool.com
+Received: from localhost (project1-mail-server-roundcube-1.project1_mail-network [172.21.0.3])
+	by mail.mookool.com (Postfix) with ESMTPA id A8A8F223A63
+	for <ava@mookool.com>; Thu, 21 Dec 2023 22:35:44 +0000 (UTC)
+MIME-Version: 1.0
+Date: Fri, 22 Dec 2023 02:05:44 +0330
+From: shayan@mookool.com
+To: Ava <ava@mookool.com>
+Subject: Hello
+Message-ID: <c41bb1355e9509cce4328e48bef15354@mookool.com>
+X-Sender: shayan@mookool.com
+Content-Type: text/plain; charset=US-ASCII;
+ format=flowed
+Content-Transfer-Encoding: 7bit
+
+hi ava
